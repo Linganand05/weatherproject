@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 font-sans">
+  <div class="w-full max-w-[360px] sm:max-w-[470px] bg-gradient-to-tr from-teal-400 via-teal-500 to-indigo-600 text-white mx-auto mt-12 sm:mt-24 rounded-2xl p-4 sm:p-6 text-center">
+    <!-- Search Section -->
+    <div class="flex items-center w-full mb-4 space-x-2">
+      <input 
+        type="text" 
+        placeholder="Enter city name" 
+        spellcheck="false" 
+        class="bg-teal-50 text-gray-800 px-4 py-2 h-12 sm:h-14 rounded-full flex-1 text-sm sm:text-lg outline-none">
+      <button class="bg-teal-50 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center">
+        <!-- Inline SVG for Search Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <div class="hidden text-left text-xs sm:text-sm text-red-500" id="error-message">
+      <p>Invalid city name</p>
+    </div>
+
+    <!-- Weather Information -->
+    <div class="hidden text-center" id="weather-info">
+      <img src="images/rain.png" alt="Weather Icon" class="w-24 sm:w-40 mx-auto mt-6 sm:mt-8" id="weather-icon">
+      <h1 class="text-4xl sm:text-5xl font-semibold mt-4" id="temperature">22°C</h1>
+      <h2 class="text-2xl sm:text-3xl font-light mt-2" id="city">New York</h2>
+
+      <!-- Weather Details -->
+      <div class="flex flex-col sm:flex-row justify-between mt-8 sm:mt-12 px-4 sm:px-6 space-y-4 sm:space-y-0">
+        <div class="flex items-center space-x-2">
+          <img src="images/humidity.png" alt="Humidity" class="w-6 sm:w-10">
+          <div>
+            <p class="text-base sm:text-2xl font-medium" id="humidity">50%</p>
+            <p class="text-xs sm:text-sm">Humidity</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <img src="images/wind.png" alt="Wind" class="w-6 sm:w-10">
+          <div>
+            <p class="text-base sm:text-2xl font-medium" id="wind-speed">15 km/h</p>
+            <p class="text-xs sm:text-sm">Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extended Forecast Section -->
+    <div class="mt-8" id="extended-forecast">
+      <h2 class="text-2xl font-semibold text-white mb-4">Extended Forecast</h2>
+      <div id="forecast-container" class="flex overflow-x-auto space-x-4">
+        <!-- Dynamic forecast cards will be injected here -->
+      </div>
+    </div>
+
+    <!-- Dropdown for recently searched cities -->
+    <div class="mt-4">
+      <select id="recent-cities" class="bg-teal-50 text-gray-800 rounded-full w-full h-12 sm:h-14 text-sm sm:text-lg outline-none hidden">
+        <option value="" disabled selected>Select recently searched city</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
